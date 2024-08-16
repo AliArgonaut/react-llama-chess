@@ -5,7 +5,7 @@ export default function Files() {
    let newFilesArray : JSX.Element[] = [];
     
     filesArray.forEach((file) => {
-        newFilesArray.push(<div className="fileTile">{file}</div>)
+        newFilesArray.push(<div key={file} className="fileTile">{file}</div>)
     }) 
 
     return (
