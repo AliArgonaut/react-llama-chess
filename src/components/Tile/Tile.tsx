@@ -5,7 +5,7 @@ interface Props {
     number: number; 
 }
 
-export default function Tile({number, image}: Props) {
+export default function Tile({ number, image}: Props) {
     if (number % 2 === 0) {
         if (image){ 
         return (
@@ -14,7 +14,7 @@ export default function Tile({number, image}: Props) {
         }
         else {
             return (
-                <div className="tile black-tile"></div>
+                <div  className="tile black-tile"></div>
             )
         }
     }
@@ -26,7 +26,7 @@ export default function Tile({number, image}: Props) {
         }
         else {
             return (
-                <div className="tile white-tile"></div>
+                <div  className="tile white-tile"></div>
             )
         }
     }
