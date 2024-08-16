@@ -61,6 +61,8 @@ export default function Chessboard() {
 
 
     return (
-        <div id="Chessboard">{board}</div>
-    )
+        <div id="Chessboard">
+            {board}       
+        </div>
+)
 }

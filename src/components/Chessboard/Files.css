@@ -1,0 +1,22 @@
+.filesContainer {
+    background-color: black;
+    height: 40px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    transform: translate(0px, -513px);
+    margin-right: 19px solid black;
+}
+
+.fileTile {
+    background: black;
+    width: 60px;
+    height: 40px;
+    color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-right: 2px;
+}

@@ -1,0 +1,27 @@
+.rankContainer {
+    height: 500px;
+    width: 40px;
+    display: flex;
+    flex-direction: column; 
+    background-color: black;
+    border-top: 1px solid black;
+    position: relative;
+    transform: translate(-39px, -514px);
+    border-top: 10px solid black;
+
+}
+
+.rankTile {
+    color: green;
+    width: 100%;
+    height: 75px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+    
+        
+}
+
