@@ -1,0 +1,19 @@
+html{
+    background-color: #252423;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 98vh;
+    width: 98vw;
+}
+
+.chessboardContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translatex(-440px);
+}
