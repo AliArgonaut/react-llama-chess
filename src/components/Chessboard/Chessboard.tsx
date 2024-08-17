@@ -39,6 +39,7 @@ pieces.push(
     { image: '../../../public/images/rookWhite.png', x: 7, y: 7},
     { image: '../../../public/images/bishopWhite.png', x: 7, y: 5}
     )
+    
 
     //VERY KINO DRAG AND DROP FUNCTIONALITY IN THIS COMPONENT, USEFUL !!
 
