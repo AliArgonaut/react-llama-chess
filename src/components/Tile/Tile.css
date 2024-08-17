@@ -15,9 +15,18 @@
     justify-content: center;
     width: 60px;
     height: 60px;
+    overflow: hidden;
 }
 
 img {
     height: 50px;
     width: 50px;
+}
+
+.chessPiece {
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
 }
