@@ -1,6 +1,7 @@
 import './Chessboard.css'
 import Tile from '../Tile/Tile'
 import { useRef } from 'react'
+import { useState } from 'react'
 
 const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 const ranks = [1, 2, 3, 4, 5, 6, 7, 8].reverse()
@@ -11,17 +12,17 @@ interface Piece {
     y: number,
 }
 
-const pieces: Piece[] = [];
+const initialBoardState: Piece[] = [];
 
 for (let i = 0; i < 8; i++) {
-    pieces.push({image: '../../../public/images/pawnBlack.png', x:1 , y: i})
+    initialBoardState.push({image: '../../../public/images/pawnBlack.png', x:1 , y: i})
 }
 
 for (let i = 0; i < 8; i++) {
-    pieces.push({image: '../../../public/images/pawnWhite.png', x: 6, y: i})
+    initialBoardState.push({image: '../../../public/images/pawnWhite.png', x: 6, y: i})
 }
 
-pieces.push(
+initialBoardState.push(
     { image: '../../../public/images/knightBlack.png', x: 0, y: 1},
     { image: '../../../public/images/bishopBlack.png', x: 0, y: 2},
     { image: '../../../public/images/rookBlack.png', x: 0, y: 0},
@@ -43,7 +44,7 @@ pieces.push(
     
     
   export default function Chessboard() {
-    
+   const [pieces, setPieces]  = useState<Piece[]>(initialBoardState)
     const chessboardRef = useRef<HTMLDivElement>(null)
       //VERY KINO DRAG AND DROP FUNCTIONALITY IN THIS COMPONENT, USEFUL !!
 
@@ -109,7 +110,7 @@ pieces.push(
             let number = i + j + 2;
             let image = undefined
 
-            pieces.forEach((piece) => {
+            initialBoardState.forEach((piece) => {
                 if (piece.x === i && piece.y === j) {
                     image = piece.image
                 }
