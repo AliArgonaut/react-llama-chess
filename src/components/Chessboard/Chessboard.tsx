@@ -1,5 +1,6 @@
 import './Chessboard.css'
 import Tile from '../Tile/Tile'
+import { useRef } from 'react'
 
 const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 const ranks = [1, 2, 3, 4, 5, 6, 7, 8].reverse()
@@ -40,8 +41,11 @@ pieces.push(
     { image: '../../../public/images/bishopWhite.png', x: 7, y: 5}
     )
     
-
-    //VERY KINO DRAG AND DROP FUNCTIONALITY IN THIS COMPONENT, USEFUL !!
+    
+  export default function Chessboard() {
+    
+    const chessboardRef = useRef<HTMLDivElement>(null)
+      //VERY KINO DRAG AND DROP FUNCTIONALITY IN THIS COMPONENT, USEFUL !!
 
     let activePiece: HTMLElement | null = null;
 
@@ -66,18 +70,38 @@ pieces.push(
     }
 
     function movePiece(e: React.MouseEvent<Element, MouseEvent>){
-        if (activePiece){   
+        const chessboard = chessboardRef.current; 
+        if (activePiece && chessboard){
+           const minX = chessboard.offsetLeft; 
+           const minY = chessboard.offsetTop;
            const x = e.clientX - 239; 
            const y = e.clientY - 39;
            
            activePiece.style.position = 'absolute';
-           activePiece.style.left = x + 'px';
-           activePiece.style.top = y + 'px';
+           //activePiece.style.left = x + 'px';
+           //activePiece.style.top = y + 'px';
+
+           if (x < minX) {
+            activePiece.style.left = minX + 'px';
+            } else if (x > minX + 480) {
+            activePiece.style.left = minX + 480 + 'px';
+            } else {
+            activePiece.style.left = x + 'px';
+ 
+           }
+           
+           if (y < minY) {
+            activePiece.style.top = minY + 'px';
+            } else if (y > minY + 512) {
+            activePiece.style.top = minY + 512 + 'px';
+            } else {
+            activePiece.style.top = y + 'px';
+           }
         }
     }
 
-export default function Chessboard() {
-    
+
+
     let board = []
 
     for (let i = 0; i < ranks.length; i++) {
@@ -97,8 +121,13 @@ export default function Chessboard() {
 
 
     return (
-        <div onMouseMove={e => movePiece(e)} onMouseDown={e => grabPiece(e)} onMouseUp={e => dropPiece()} id="Chessboard">
-            {board}       
+        <div 
+            onMouseMove={e => movePiece(e)} 
+            onMouseDown={e => grabPiece(e)} 
+            onMouseUp={e => dropPiece()}
+            ref = {chessboardRef} 
+            id="Chessboard">
+                {board}       
         </div>
 )
 }
