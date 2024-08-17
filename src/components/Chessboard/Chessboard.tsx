@@ -40,6 +40,41 @@ pieces.push(
     { image: '../../../public/images/bishopWhite.png', x: 7, y: 5}
     )
 
+    //VERY KINO DRAG AND DROP FUNCTIONALITY IN THIS COMPONENT, USEFUL !!
+
+    let activePiece: HTMLElement | null = null;
+
+    function grabPiece(e: React.MouseEvent<Element, MouseEvent>){
+        const elem = e.target as HTMLElement;
+        if (elem.classList.contains('chessPiece')){
+           const x = e.clientX - 239; 
+           const y = e.clientY - 39;
+           
+           elem.style.position = 'absolute';
+           elem.style.left = x + 'px';
+           elem.style.top = y + 'px';
+           
+           activePiece = elem;
+        }
+    }
+    
+    function dropPiece(){
+        if (activePiece){
+            activePiece = null;
+        }
+    }
+
+    function movePiece(e: React.MouseEvent<Element, MouseEvent>){
+        if (activePiece){   
+           const x = e.clientX - 239; 
+           const y = e.clientY - 39;
+           
+           activePiece.style.position = 'absolute';
+           activePiece.style.left = x + 'px';
+           activePiece.style.top = y + 'px';
+        }
+    }
+
 export default function Chessboard() {
     
     let board = []
@@ -61,7 +96,7 @@ export default function Chessboard() {
 
 
     return (
-        <div id="Chessboard">
+        <div onMouseMove={e => movePiece(e)} onMouseDown={e => grabPiece(e)} onMouseUp={e => dropPiece()} id="Chessboard">
             {board}       
         </div>
 )
